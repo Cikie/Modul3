@@ -5,8 +5,8 @@ const qs = require('qs');
 const sever = http.createServer((req, res) => {
     if (req.method === 'GET') {
         fs.readFile('./display.html', function (err, data) {
-            res.writeHead(200, {'Content-Type': 'text/html'})
-            console.log(data)
+            res.writeHead(200, {'Content-Type': 'text/html'});
+            console.log(data);
             res.write(data);
             return res.end();
         })
@@ -19,7 +19,7 @@ const sever = http.createServer((req, res) => {
             const todoInfo = qs.parse(data);
             fs.readFile('./todo.html', 'utf-8', function (err, dataTodo) {
                 if (err) {
-                    console.log(err)
+                    console.log(err);
                 }
                 dataTodo = dataTodo.replace('{Job}', todoInfo.job);
                 dataTodo = dataTodo.replace('{Clean}', todoInfo.clean);
@@ -32,10 +32,10 @@ const sever = http.createServer((req, res) => {
             })
         })
         req.on('error', () => {
-            console.log('error')
+            console.log('error');
         })
     }
 })
 sever.listen(3000, function () {
-    console.log('Doing Job')
-})
+    console.log('Doing Job');
+});
