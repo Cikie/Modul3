@@ -28,11 +28,11 @@ const sever = http.createServer(function (req, res) {
                 return res.end();
             });
         });
-        req.on('error',()=>{
+        req.on('error', () => {
             console.log('error')
         })
     }
 });
-sever.listen(8080,function (){
+sever.listen(8080, function () {
     console.log('Sever is running at LoCalHost 8080')
 });

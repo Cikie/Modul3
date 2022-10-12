@@ -2,7 +2,7 @@ const http = require('http');
 const fs = require('fs');
 
 let sever = http.createServer(((req, res)=>{
-    fs.readFile ('./index.html',"utf-8" , function (err,data){
+    fs.readFile ('./registerUpload.html',"utf-8" , function (err,data){
         if (err){
             res.writeHead(404,{'Content-Type': 'text/html'});
             return res.end('404 Not Found');

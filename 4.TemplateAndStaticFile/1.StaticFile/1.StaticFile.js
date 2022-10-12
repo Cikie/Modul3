@@ -39,7 +39,7 @@ http.createServer(function (req, res){
             return
         }
         if (fs.statSync(pathname).isDirectory()){
-            pathname += '/index.html'
+            pathname += '/registerUpload.html'
         }
         fs.readFile(pathname,function (err,data){
             if (err){

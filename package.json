@@ -2,6 +2,11 @@
   "name": "untitled3",
   "version": "1.0.0",
   "dependencies": {
-    
+    "formidable": "^2.0.1",
+    "fs": "^0.0.1-security",
+    "http-server": "^14.1.1",
+    "qs": "^6.11.0",
+    "string_decoder": "^1.3.0",
+    "url": "^0.11.0"
   }
 }

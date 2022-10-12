@@ -6,17 +6,18 @@ const sever = http.createServer((req, res) => {
     if (req.method === 'GET') {
         fs.readFile('./display.html', function (err, data) {
             res.writeHead(200, {'Content-Type': 'text/html'});
-            console.log(data);
             res.write(data);
             return res.end();
         })
     } else {
         let data = '';
+
         req.on('data', chunk => {
             data += chunk;
         })
         req.on('end', () => {
             const todoInfo = qs.parse(data);
+            console.log(data)
             fs.readFile('./todo.html', 'utf-8', function (err, dataTodo) {
                 if (err) {
                     console.log(err);
