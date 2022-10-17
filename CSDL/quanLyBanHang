@@ -1,57 +1,60 @@
-# use product;
+create database QuanLyBanHang;
 
-create table DonViDatHang
+use QuanLyBanHang;
+
+create table Customer
 (
-    `ID`            int not null AUTO_INCREMENT primary key,
-    `Tên đơn vị`    varchar(255),
-    `Địa Chỉ`       varchar(255),
-    `Số điện thoại` varchar(13)
+    `cID`   int not null primary key auto_increment unique,
+    `cNAME` varchar(255),
+    `cAGE`  int(3)
 );
 
-create table KhachHang
+create table Product
 (
-    `Mã đơn hàng`    int not null auto_increment primary key unique,
-    `Tên khách hàng` varchar(255),
-    `Địa chỉ`        varchar(255)
-);
-
-create table Hang
-(
-    `Mã Hàng`        int not null auto_increment primary key unique,
-    `Tên hàng hóa`   varchar(255),
-    `Đơn vị tính`    int(255),
-    `Mô tả mặt hàng` varchar(255)
-);
-
-create table NguoiDat
-(
-    `Mã số`     int not null auto_increment primary key unique,
-    `Họ và tên` varchar(255)
-);
-
-create table NoiGiao
-(
-    `Mã số`        int not null unique,
-    `Tên nơi giao` varchar(255)
-);
-
-create table NguoiNhan
-(
-    `Mã số`     int not null unique,
-    `Họ và tên` varchar(255)
-);
-
-create table NguoiGiao
-(
-    `Mã số`     int not null unique,
-    `Họ và tên` varchar(255)
+    `pID`    int not null auto_increment primary key unique,
+    `pNAME`  varchar(255),
+    `pPRICE` int(50)
 );
 
 
-insert into DonViDatHang values (1,'Dao Anh','Ha noi','0398586888');
+create table recipe
+(
+    `oID`         int not null primary key auto_increment unique,
+    customer_id   int,
+    foreign key (customer_id) references Customer (cID),
+    `oDate`       datetime,
+    `oTotalPrice` int(255)
+);
 
-update donvidathang
-set `Số điện thoại` = 123456789
-where ID = 1
+create table OrderDetail
+(
+    `oID` int not null,
+    `pID` int not null,
+    primary key (oID, pID),
+    foreign key (pID) references product (pID),
+    foreign key (oID) references recipe (oId)
+);
 
+insert into customer
+values (1, 'Anh', 24);
 
+insert into recipe
+values (1, 1, current_time, 2500000);
+
+alter table orderdetail
+    add column odQTY varchar(255);
+
+insert into product
+values (1, 'my tom', 10000);
+
+insert into product
+values (2, 'bim bim', 15000);
+
+insert into product
+values (3, 'sting', 10000);
+
+insert into product
+values (4, 'Coca cola', 5000);
+
+insert into orderdetail
+values (1, 1, 'next gen order');
