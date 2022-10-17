@@ -1,0 +1,57 @@
+# use product;
+
+create table DonViDatHang
+(
+    `ID`            int not null AUTO_INCREMENT primary key,
+    `Tên đơn vị`    varchar(255),
+    `Địa Chỉ`       varchar(255),
+    `Số điện thoại` varchar(13)
+);
+
+create table KhachHang
+(
+    `Mã đơn hàng`    int not null auto_increment primary key unique,
+    `Tên khách hàng` varchar(255),
+    `Địa chỉ`        varchar(255)
+);
+
+create table Hang
+(
+    `Mã Hàng`        int not null auto_increment primary key unique,
+    `Tên hàng hóa`   varchar(255),
+    `Đơn vị tính`    int(255),
+    `Mô tả mặt hàng` varchar(255)
+);
+
+create table NguoiDat
+(
+    `Mã số`     int not null auto_increment primary key unique,
+    `Họ và tên` varchar(255)
+);
+
+create table NoiGiao
+(
+    `Mã số`        int not null unique,
+    `Tên nơi giao` varchar(255)
+);
+
+create table NguoiNhan
+(
+    `Mã số`     int not null unique,
+    `Họ và tên` varchar(255)
+);
+
+create table NguoiGiao
+(
+    `Mã số`     int not null unique,
+    `Họ và tên` varchar(255)
+);
+
+
+insert into DonViDatHang values (1,'Dao Anh','Ha noi','0398586888');
+
+update donvidathang
+set `Số điện thoại` = 123456789
+where ID = 1
+
+
