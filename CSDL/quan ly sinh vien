@@ -54,3 +54,22 @@ VALUES (1, 'CF', 5, 1),
 insert into mark(markID, subject_id, student_id, mark, examTimes) VALUES (1,1, 1, 8, 1),
                                                                          (2,1, 2, 10, 2),
                                                                          (3,2, 1, 12, 1);
+
+select *from student
+where studentName like 'h%';
+
+select *from clazz
+where MONTH(startDate) =10 ;
+
+select *from subject
+where credit between 3 and 5;
+
+update student
+set class_id = 2
+where studentName = 'Hung';
+
+select studentName,subName,mark.mark
+from mark
+inner  join student s on mark.subject_id = s.studentID
+inner join subject on mark.subject_id = subject.subID
+order by mark.mark DESC, studentName ;
